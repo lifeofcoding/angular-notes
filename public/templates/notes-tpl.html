@@ -1,4 +1,4 @@
 <div class="well" ng-repeat="item in notesCtl.notes.notes" ng-class="{highlight: $even}">
-   <span>{{$index + 1}}: <strong>{{item.title}}</strong></span> 
-   <button class="btn-default btn" ng-click="notesCtl.notes.remove(item)">Delete!</button>
+   <span>{{item.title}}</span>
+   <button class="btn-default btn pull-right remove-note" ng-click="notesCtl.notes.remove(item)">Delete!</button>
 </div>
