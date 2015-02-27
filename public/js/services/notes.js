@@ -3,16 +3,21 @@
     angular.module('notesApp').factory('notes', ['$http', function($http){
         var self = this;
         this.notes = [];
+        this.makeRequest = function(method, url, callback){
+            $http[method](url).success(function(serverResponse){
+                callback(serverResponse);
+            });
+        }
         this.fetch = function(){
-            $http.get('/notes').success(function(serverNotes){
-                self.notes = serverNotes;
+            this.makeRequest('get', '/notes', function(response){
+                self.notes = response;
             });
         }
         this.addNote = function(newItem){
             this.notes.push(newItem);
         }
         this.remove = function(note){
-            $http.delete('/notes/' + note['_id']).success(function(serverNotes){
+            this.makeRequest('delete', '/notes/' + note['_id'], function(response){
                 self.notes.splice(self.notes.indexOf(note), 1);
             });
         }
