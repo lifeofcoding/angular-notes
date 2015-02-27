@@ -1,5 +1,6 @@
 (function(angular){
     'use strict';
+    /* Credits go to http://weblogs.asp.net/dwahlin/building-an-angularjs-modal-service */
     angular.module('notesApp').service('modalService', ['$modal', function ($modal) {
 
     var modalDefaults = {
