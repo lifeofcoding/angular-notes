@@ -1,4 +1,9 @@
-<div class="well" ng-repeat="item in notesCtl.notes.notes" ng-class="{highlight: $even}">
-   <span>{{item.title}}</span>
-   <button class="btn-default btn pull-right remove-note" ng-click="notesCtl.notes.remove(item)">Delete!</button>
+<div class="notes-list">
+    <div ng-controller="ModalCtrl">
+        <button class="btn btn-default pull-right new-note" ng-click="open()">New Note</button>
+    </div><br><br>
+    <div class="well" ng-repeat="item in notesCtl.notes.notes" ng-class="{highlight: $even}">
+       <a href="" ng-click="notesCtl.editNote(item)">{{item.title}}</a>
+       <button class="btn-default btn pull-right remove-note" ng-click="notesCtl.notes.remove(item)">Delete!</button>
+    </div>
 </div>

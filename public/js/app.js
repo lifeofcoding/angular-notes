@@ -1,5 +1,4 @@
-angular.module('notesApp', []);
-angular.module('notesApp', ['ui.router']).config(['$stateProvider','$urlRouterProvider', function($statePrvider, $urlRouterProvider){
+angular.module('notesApp', ['ui.router', 'ui.bootstrap']).config(['$stateProvider','$urlRouterProvider', function($statePrvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/home');
     
     $statePrvider.state('home', {

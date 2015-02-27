@@ -16,9 +16,23 @@
         this.addNote = function(newItem){
             this.notes.push(newItem);
         }
+        this.createNote = function(note){
+            $http.post('/notes', note).success(function(data, status, headers, config) {
+                self.notes.push(data);
+            });
+        }
         this.remove = function(note){
             this.makeRequest('delete', '/notes/' + note['_id'], function(response){
                 self.notes.splice(self.notes.indexOf(note), 1);
+            });
+        }
+        this.editNote = function(note){
+            $http.put('/notes/' + note['_id'], note).success(function(data, status, headers, config) {
+                self.notes.forEach(function(obj, index){
+                    if(obj['_id'] === note['_id']){
+                        self.notes[index] = data;
+                    }
+                });
             });
         }
         this.fetch();
